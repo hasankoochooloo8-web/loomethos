@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoomEthos - Ethical Textile Manufacturing</title>
+  <meta name="description" content="LoomEthos specializes in sustainable and ethically sourced textiles, custom fabric development, small-batch manufacturing, and natural dyeing processes.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    /* Global Styles & Neomorphism Base */
+    :root {
+      --primary: rgb(26, 164, 228);
+      --primaryLight: rgb(125, 197, 231);
+      --primaryDark: rgb(18, 115, 159);
+      --secondary: rgb(52, 79, 202);
+      --accent: rgb(230, 107, 49);
+      --backgroundBase: rgb(235, 240, 245);
+      --textMain: rgb(30, 40, 50);
+      --textMuted: rgb(90, 110, 130);
+      --borderRadius: 16px;
+      --sectionSpacing: 5rem;
+      --cardBoxShadow: 8px 8px 16px rgba(18, 115, 159, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.8), 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    body {
+      font-family: 'Merriweather', serif;
+      font-weight: 400;
+      color: var(--textMain);
+      background-color: var(--backgroundBase);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      color: var(--textMain);
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: var(--sectionSpacing) 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Neomorphism Buttons */
+    .button {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 9999px; /* rounded-pill */
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: var(--backgroundBase);
+      color: var(--primaryDark);
+      box-shadow: 6px 6px 12px rgba(18, 115, 159, 0.15), -6px -6px 12px rgba(255, 255, 255, 0.7);
+      border: none;
+    }
+
+    .button:hover {
+      box-shadow: inset 4px 4px 8px rgba(18, 115, 159, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+      color: var(--primary);
+    }
+
+    .button-primary {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 6px 6px 12px rgba(0,0,0,0.2), -6px -6px 12px rgba(255,255,255,0.7); /* Adjusted for primary color */
+    }
+    .button-primary:hover {
+      background-color: var(--primaryDark);
+      box-shadow: inset 4px 4px 8px rgba(0,0,0,0.3), inset -4px -4px 8px rgba(255,255,255,0.6);
+    }
+
+    /* Neomorphism Cards */
+    .card {
+      background-color: var(--backgroundBase);
+      border-radius: var(--borderRadius);
+      padding: 1.5rem;
+      box-shadow: var(--cardBoxShadow);
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 12px 12px 24px rgba(18, 115, 159, 0.15), -12px -12px 24px rgba(255, 255, 255, 1), 0 15px 45px rgba(0,0,0,0.3); /* shadow-grow */
+    }
+
+    /* Icon Container */
+    .icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: var(--backgroundBase);
+      box-shadow: 5px 5px 10px rgba(18, 115, 159, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+    .icon-circle svg {
+      fill: var(--primary);
+      width: 32px;
+      height: 32px;
+    }
+    .icon-circle:hover {
+      box-shadow: inset 3px 3px 6px rgba(18, 115, 159, 0.08), inset -3px -3px 6px rgba(255, 255, 255, 0.6);
+    }
+
+
+    /* Layout helper classes - Mobile-first */
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2-col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-3-col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .grid-4-col {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .flex-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .flex-row-reverse-md {
+        flex-direction: row-reverse;
+      }
+    }
+
+    /* Specific Section Styles */
+    #navigation {
+      background-color: var(--backgroundBase);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+    #navigation .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #navigation .brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--textMain);
+      padding: 0.5rem 0;
+    }
+    #navigation .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: none; /* Hidden by default for mobile */
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+    #navigation .nav-list.active {
+      display: flex;
+    }
+    #navigation .nav-list li {
+      margin: 0.5rem 0;
+    }
+    #navigation .nav-list a {
+      color: var(--textMuted);
+      padding: 0.5rem 1rem;
+      display: block;
+      border-radius: var(--borderRadius);
+      transition: all 0.2s ease;
+    }
+    #navigation .nav-list a:hover {
+      background-color: rgba(var(--primary), 0.1);
+      color: var(--primary);
+      text-decoration: none;
+    }
+    #navigation .cta-button-nav {
+      margin-left: auto; /* Pushes button to the right */
+      margin-top: 1rem;
+    }
+    #navigation .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--textMain);
+      padding: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      #navigation .nav-container {
+        flex-wrap: nowrap;
+      }
+      #navigation .nav-list {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        margin-left: auto;
+      }
+      #navigation .nav-list li {
+        margin: 0 1rem;
+      }
+      #navigation .menu-toggle {
+        display: none;
+      }
+      #navigation .cta-button-nav {
+        margin-left: 2rem;
+        margin-top: 0;
+      }
+    }
+
+    #hero {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      overflow: hidden; /* For pseudo-elements or subtle effects */
+    }
+    #hero .hero-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 3rem;
+    }
+    #hero h1 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    #hero p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+    #hero .button {
+      background-color: white;
+      color: var(--primaryDark);
+      box-shadow: 8px 8px 16px rgba(0,0,0,0.3), -8px -8px 16px rgba(255,255,255,0.7);
+    }
+    #hero .button:hover {
+      background-color: var(--backgroundBase);
+      box-shadow: inset 5px 5px 10px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.8);
+      color: var(--primary);
+    }
+    #hero .hero-image-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      padding-bottom: 100%; /* Aspect ratio 1:1 */
+      border-radius: var(--borderRadius);
+      overflow: hidden;
+      box-shadow: var(--cardBoxShadow);
+    }
+    #hero .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--borderRadius);
+      transition: transform 0.5s ease-in-out;
+    }
+    #hero .hero-image-container:hover .hero-image {
+        transform: scale(1.05);
+    }
+
+    @media (min-width: 768px) {
+      #hero {
+        text-align: left;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+      }
+      #hero h1 {
+        font-size: 3.5rem;
+      }
+      #hero .hero-content-wrapper {
+        flex-direction: row;
+        text-align: left;
+      }
+      #hero .hero-text-content {
+        flex: 1;
+        padding-right: 3rem;
+      }
+      #hero .hero-image-container {
+        flex: 1;
+        max-width: 640px; /* Specific width from JSON */
+        padding-bottom: 0;
+        height: 640px; /* Specific height from JSON */
+      }
+    }
+
+    #about {
+      text-align: center;
+    }
+    #about img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--borderRadius);
+      margin-top: 2rem;
+      box-shadow: var(--cardBoxShadow);
+      transition: transform 0.4s ease-out;
+    }
+    #about img:hover {
+      transform: scale(1.02);
+    }
+
+    #services .service-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #services .service-item img {
+      max-width: 100%;
+      width: 384px;
+      height: 384px;
+      object-fit: cover;
+      border-radius: var(--borderRadius);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--cardBoxShadow);
+      transition: transform 0.4s ease;
+    }
+    #services .service-item img:hover {
+      transform: translateY(-8px);
+    }
+    #services h2, #services h3 {
+      text-align: center;
+    }
+
+    #supply-chain .metric-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #supply-chain .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primaryDark);
+      margin-top: 0.5rem;
+    }
+    #supply-chain .metric-label {
+      color: var(--textMuted);
+    }
+    #supply-chain .supply-chain-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--borderRadius);
+      box-shadow: var(--cardBoxShadow);
+      margin-top: 2rem;
+      transition: transform 0.5s ease-in-out;
+    }
+    #supply-chain .supply-chain-image:hover {
+        transform: rotate(2deg) scale(1.02);
+    }
+
+    #dyeing-process {
+      text-align: center;
+    }
+    #dyeing-process .featured-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--borderRadius);
+      margin-top: 2rem;
+      box-shadow: var(--cardBoxShadow);
+      transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    #dyeing-process .featured-image:hover {
+      filter: saturate(1.2);
+      transform: scale(1.01);
+    }
+
+
+    #testimonials .quote-card {
+      background-color: var(--backgroundBase);
+      border-radius: var(--borderRadius);
+      padding: 2rem;
+      box-shadow: var(--cardBoxShadow);
+      margin: 1rem 0;
+      text-align: center;
+      position: relative;
+      transform: translateY(0);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    #testimonials .quote-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 10px 10px 20px rgba(18, 115, 159, 0.15), -10px -10px 20px rgba(255, 255, 255, 0.8), 0 12px 36px rgba(0,0,0,0.25);
+    }
+    #testimonials .quote-text {
+      font-style: italic;
+      color: var(--textMain);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    #testimonials .quote-author {
+      font-weight: 700;
+      color: var(--primaryDark);
+    }
+    #testimonials h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: #212529; /* Dark background */
+      color: #ffffff; /* Light text */
+      padding: 3rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--primaryLight);
+      margin: 0 0.5rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+    footer .contact-info, footer .legal-links {
+      margin-top: 1.5rem;
+    }
+    footer .legal-links a {
+      color: var(--primaryLight);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer .legal-links a:hover {
+      text-decoration: underline;
+    }
+    footer .copyright {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Cookie Consent */
+    .cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(30, 40, 50, 0.95); /* Darker, slightly transparent */
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    }
+    .cookie-consent-banner p {
+      margin: 0 0 1rem 0;
+      font-size: 0.9rem;
+    }
+    .cookie-consent-banner button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .cookie-consent-banner button:hover {
+      background-color: #e06030; /* Slightly darker accent */
+    }
+    @media (min-width: 768px) {
+      .cookie-consent-banner {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.8rem 2rem;
+      }
+      .cookie-consent-banner p {
+        margin: 0;
+      }
+    }
+
+    /* Accessibility - Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header id="navigation">
+    <div class="nav-container">
+      <a href="#" class="brand">LoomEthos</a>
+      <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#supply-chain">Supply Chain</a></li>
+          <li><a href="#dyeing-process">Dyeing Process</a></li>
+          <li><a href="#contact" class="button button-primary cta-button-nav">Book Consultation</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<main>
+<style>
+  #privacy-policy-section {
+    padding-top: 7rem;
+  }
+</style>
+<section id="privacy-policy-section">
+    <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Privacy Policy for Loom Ethos</h2>
+
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        At Loom Ethos, we are committed to protecting the privacy and security of your personal information. This Privacy Policy outlines how we collect, use, disclose, and safeguard your data when you visit our site, interact with our services, or engage with our ethical textile manufacturing operations. We operate in compliance with the General Data Protection Regulation (GDPR) and other applicable privacy laws.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">1. Information We Collect</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        We collect different types of information for various purposes to provide and improve our services to you.
+    </p>
+
+    <h4 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">1.1 Personal Data You Voluntarily Provide</h4>
+    <p style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.5;">
+        When you interact with our site, whether by making an inquiry, requesting a quote for custom fabric development, subscribing to our newsletter, or engaging in consultancy services, you may provide us with certain personally identifiable information. This includes, but is not limited to:
+    </p>
+    <ul style="list-style: disc; padding-left: 2rem; margin-bottom: 1rem; font-size: 1rem; line-height: 1.5;">
+        <li style="margin-bottom: 0.5rem;">Contact Information: Name, email address, phone number, and physical address (for shipping or billing purposes related to textile orders).</li>
+        <li style="margin-bottom: 0.5rem;">Professional Information: Company name, job title, and industry details relevant to our B2B interactions for sustainable textiles or ethical supply chain consultancy.</li>
+        <li style="margin-bottom: 0.5rem;">Communication Data: Information you provide when you send us emails, submit forms, or communicate with us directly.</li>
+        <li style="margin-bottom: 0.5rem;">Feedback and Survey Data: Information you provide when participating in surveys or providing feedback about our sustainable textile products or services.</li>
+    </ul>
+
+    <h4 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">1.2 Automatically Collected Data</h4>
+    <p style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.5;">
+        When you visit our online platform, we may automatically collect certain information about your device and browsing activity. This data helps us understand how our site is used and improve its functionality. This may include:
+    </p>
+    <ul style="list-style: disc; padding-left: 2rem; margin-bottom: 1rem; font-size: 1rem; line-height: 1.5;">
+        <li style="margin-bottom: 0.5rem;">Usage Data: Pages visited, time spent on pages, referral sources, and interaction patterns on our site.</li>
+        <li style="margin-bottom: 0.5rem;">Technical Data: IP address, browser type and version, operating system, device type, and other diagnostic data.</li>
+    </ul>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">2. How We Use Your Information</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        We use the collected data for various purposes related to our ethical textile operations, including:
+    </p>
+    <ul style="list-style: disc; padding-left: 2rem; margin-bottom: 1rem; font-size: 1rem; line-height: 1.5;">
+        <li style="margin-bottom: 0.5rem;">To Provide and Maintain Our Services: Including responding to inquiries about sustainable textiles, custom fabrics, small-batch manufacturing, and ethical supply chain consultancy.</li>
+        <li style="margin-bottom: 0.5rem;">To Fulfill Orders: Processing and delivering orders for sustainable textiles and natural dyed products.</li>
+        <li style="margin-bottom: 0.5rem;">To Communicate with You: Sending important updates, service announcements, and marketing communications related to our ethical textile products and services (where you have consented).</li>
+        <li style="margin-bottom: 0.5rem;">To Improve Our Site and Services: Analyzing usage patterns to enhance user experience, website functionality, and the relevance of our content showcasing sustainable practices.</li>
+        <li style="margin-bottom: 0.5rem;">To Customize Your Experience: Tailoring content and offers based on your interests in sustainable textiles and ethical manufacturing.</li>
+        <li style="margin-bottom: 0.5rem;">For Marketing and Promotion: To inform you about new sustainable fabric developments, upcoming workshops on natural dyeing, or ethical sourcing insights, in line with your preferences.</li>
+        <li style="margin-bottom: 0.5rem;">For Legal Compliance: To comply with legal obligations and resolve any disputes related to our business operations.</li>
+        <li style="margin-bottom: 0.5rem;">For Security: To detect, prevent, and address technical issues or fraudulent activities on our platform.</li>
+    </ul>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">3. Legal Basis for Processing Personal Data Under GDPR</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        Our legal basis for collecting and using the personal data described in this Privacy Policy depends on the personal data we collect and the specific context in which we collect it. We may process your Personal Data because:
+    </p>
+    <ul style="list-style: disc; padding-left: 2rem; margin-bottom: 1rem; font-size: 1rem; line-height: 1.5;">
+        <li style="margin-bottom: 0.5rem;">It is necessary for the performance of a contract with you (e.g., fulfilling textile orders, providing consultancy services).</li>
+        <li style="margin-bottom: 0.5rem;">You have given us explicit permission to do so (e.g., for marketing communications).</li>
+        <li style="margin-bottom: 0.5rem;">The processing is in our legitimate interests and not overridden by your rights (e.g., improving our services, ensuring website security).</li>
+        <li style="margin-bottom: 0.5rem;">To comply with the law.</li>
+    </ul>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">4. Disclosure of Your Information</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        We may share your information with limited third parties under specific circumstances:
+    </p>
+    <ul style="list-style: disc; padding-left: 2rem; margin-bottom: 1rem; font-size: 1rem; line-height: 1.5;">
+        <li style="margin-bottom: 0.5rem;">Service Providers: We may employ third-party companies and individuals to facilitate our services (e.g., hosting providers, analytics services, payment processors, shipping partners for textile deliveries). These third parties have access to your personal data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</li>
+        <li style="margin-bottom: 0.5rem;">Business Transfers: If Loom Ethos is involved in a merger, acquisition, or asset sale, your personal data may be transferred. We will provide notice before your personal data is transferred and becomes subject to a different Privacy Policy.</li>
+        <li style="margin-bottom: 0.5rem;">Legal Requirements: We may disclose your personal data in the good faith belief that such action is necessary to:
+            <ul style="list-style: circle; padding-left: 1.5rem; margin-top: 0.5rem; font-size: 1rem; line-height: 1.5;">
+                <li style="margin-bottom: 0.25rem;">Comply with a legal obligation.</li>
+                <li style="margin-bottom: 0.25rem;">Protect and defend the rights or property of Loom Ethos.</li>
+                <li style="margin-bottom: 0.25rem;">Prevent or investigate possible wrongdoing in connection with our services.</li>
+                <li style="margin-bottom: 0.25rem;">Protect the personal safety of users of our services or the public.</li>
+                <li style="margin-bottom: 0.25rem;">Protect against legal liability.</li>
+            </ul>
+        </li>
+    </ul>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        We do not sell, rent, or trade your personal data to third parties for their direct marketing purposes.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">5. Data Retention</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        We retain your personal data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your personal data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.
+    </p>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        Usage data is generally retained for a shorter period, except when this data is used to strengthen the security or to improve the functionality of our service, or we are legally obligated to retain this data for longer periods.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">6. Data Security</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        The security of your data is paramount to us. We implement appropriate technical and organizational measures to protect your personal data from unauthorized access, use, alteration, and disclosure. However, no method of transmission over the Internet or method of electronic storage is 100% secure, and we cannot guarantee absolute security. We strive to use commercially acceptable means to protect your personal data.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">7. Your Data Protection Rights Under GDPR</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        If you are a resident of the European Economic Area (EEA), you have certain data protection rights. Loom Ethos aims to take reasonable steps to allow you to correct, amend, delete, or limit the use of your personal data.
+    </p>
+    <p style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.5;">
+        In certain circumstances, you have the following data protection rights:
+    </p>
+    <ul style="list-style: disc; padding-left: 2rem; margin-bottom: 1rem; font-size: 1rem; line-height: 1.5;">
+        <li style="margin-bottom: 0.5rem;">The right to access, update or to delete the information we have on you.</li>
+        <li style="margin-bottom: 0.5rem;">The right of rectification.</li>
+        <li style="margin-bottom: 0.5rem;">The right to object.</li>
+        <li style="margin-bottom: 0.5rem;">The right of restriction.</li>
+        <li style="margin-bottom: 0.5rem;">The right to data portability.</li>
+        <li style="margin-bottom: 0.5rem;">The right to withdraw consent.</li>
+    </ul>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        Please note that we may ask you to verify your identity before responding to such requests. You have the right to complain to a Data Protection Authority about our collection and use of your personal data. For more information, please contact your local data protection authority in the EEA.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">8. Links to Other Sites</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        Our service may contain links to other sites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">9. Children's Privacy</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        Our service does not address anyone under the age of 18 ("Children"). We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us. If we become aware that we have collected personal data from children without verification of parental consent, we take steps to remove that information from our servers.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">10. Changes to This Privacy Policy</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We will let you know via email and/or a prominent notice on our service, prior to the change becoming effective and update the "last updated" date at the top of this Privacy Policy. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">11. Contact Us</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.5;">
+        If you have any questions about this Privacy Policy, your data, or our ethical textile manufacturing practices, please contact us:
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-bottom: 1rem; font-size: 1rem; line-height: 1.5;">
+        <li style="margin-bottom: 0.5rem;"><strong style="font-weight: 700;">Company Name:</strong> Loom Ethos</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="font-weight: 700;">Address:</strong> 56th Road, New York, New York, 11378, USA</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="font-weight: 700;">Phone:</strong> +19832277304</li>
+    </ul>
+</section>
+</main>
+<footer id="contact">
+    <div class="container">
+      <div class="brand">LoomEthos</div>
+      <p>Ethical Textile Manufacturing</p>
+      <div class="contact-info">
+        <p>56th Road, New York, New York, 11378, USA</p>
+        <p>Phone: <a href="tel:+19832277304">+19832277304</a></p>
+        <p>Email: <a href="mailto:info@DOMAIN_NAME_REPLACE">info@DOMAIN_NAME_REPLACE</a></p>
+      </div>
+      <div class="map-container" style="margin-top: 2rem; margin-bottom: 2rem; border-radius: var(--borderRadius); overflow: hidden;">
+        <iframe
+          width="100%"
+          height="300"
+          frameborder="0" style="border:0; border-radius: var(--borderRadius);"
+          src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=New+York,USA&zoom=10"
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0">
+        </iframe>
+      </div>
+      <div class="legal-links">
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./tos.html">Terms of Service</a>
+      </div>
+      <p class="copyright">© 2024 LoomEthos. All rights reserved. Ethical Textile Manufacturing.</p>
+    </div>
+  </footer>
+
+  <div class="cookie-consent-banner" id="cookieConsentBanner">
+    <p>This website uses cookies to ensure you get the best experience on our site. By continuing to use our site, you agree to our <a href="./privacy.html" style="color: var(--primaryLight);">Privacy Policy</a>.</p>
+    <button id="acceptCookies">Accept</button>
+  </div>
+
+  <script>
+    // Navigation Toggle for Mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navList = document.querySelector('.nav-list');
+  
+      if (menuToggle && navList) {
+        menuToggle.addEventListener('click', function() {
+          navList.classList.toggle('active');
+        });
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          if (navList.classList.contains('active')) {
+            navList.classList.remove('active'); // Close menu on click
+          }
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Cookie Consent
+      const consentBanner = document.getElementById('cookieConsentBanner');
+      const acceptButton = document.getElementById('acceptCookies');
+      const cookieNamePrefix = 'consent_';
+      const cookieName = cookieNamePrefix + Math.random().toString(36).substring(2, 15);
+
+      function getCookie(name) {
+          const nameEQ = name + "=";
+          const ca = document.cookie.split(';');
+          for(let i=0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+      }
+
+      function setCookie(name, value, days) {
+          let expires = "";
+          if (days) {
+              const date = new Date();
+              date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+              expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "")  + expires + "; path=/; SameSite=Lax";
+      }
+
+      const hasConsent = getCookie('cookie_consent_given');
+      if (!hasConsent) {
+          consentBanner.style.display = 'flex';
+      } else {
+          consentBanner.style.display = 'none';
+      }
+
+      acceptButton.addEventListener('click', function() {
+          setCookie('cookie_consent_given', 'true', 365); // Consent valid for 1 year
+          consentBanner.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>

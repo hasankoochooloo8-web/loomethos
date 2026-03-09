@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoomEthos - Ethical Textile Manufacturing</title>
+  <meta name="description" content="LoomEthos specializes in sustainable and ethically sourced textiles, custom fabric development, small-batch manufacturing, and natural dyeing processes.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    /* Global Styles & Neomorphism Base */
+    :root {
+      --primary: rgb(26, 164, 228);
+      --primaryLight: rgb(125, 197, 231);
+      --primaryDark: rgb(18, 115, 159);
+      --secondary: rgb(52, 79, 202);
+      --accent: rgb(230, 107, 49);
+      --backgroundBase: rgb(235, 240, 245);
+      --textMain: rgb(30, 40, 50);
+      --textMuted: rgb(90, 110, 130);
+      --borderRadius: 16px;
+      --sectionSpacing: 5rem;
+      --cardBoxShadow: 8px 8px 16px rgba(18, 115, 159, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.8), 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    body {
+      font-family: 'Merriweather', serif;
+      font-weight: 400;
+      color: var(--textMain);
+      background-color: var(--backgroundBase);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      color: var(--textMain);
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: var(--sectionSpacing) 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Neomorphism Buttons */
+    .button {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 9999px; /* rounded-pill */
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: var(--backgroundBase);
+      color: var(--primaryDark);
+      box-shadow: 6px 6px 12px rgba(18, 115, 159, 0.15), -6px -6px 12px rgba(255, 255, 255, 0.7);
+      border: none;
+    }
+
+    .button:hover {
+      box-shadow: inset 4px 4px 8px rgba(18, 115, 159, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+      color: var(--primary);
+    }
+
+    .button-primary {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 6px 6px 12px rgba(0,0,0,0.2), -6px -6px 12px rgba(255,255,255,0.7); /* Adjusted for primary color */
+    }
+    .button-primary:hover {
+      background-color: var(--primaryDark);
+      box-shadow: inset 4px 4px 8px rgba(0,0,0,0.3), inset -4px -4px 8px rgba(255,255,255,0.6);
+    }
+
+    /* Neomorphism Cards */
+    .card {
+      background-color: var(--backgroundBase);
+      border-radius: var(--borderRadius);
+      padding: 1.5rem;
+      box-shadow: var(--cardBoxShadow);
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 12px 12px 24px rgba(18, 115, 159, 0.15), -12px -12px 24px rgba(255, 255, 255, 1), 0 15px 45px rgba(0,0,0,0.3); /* shadow-grow */
+    }
+
+    /* Icon Container */
+    .icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: var(--backgroundBase);
+      box-shadow: 5px 5px 10px rgba(18, 115, 159, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+    .icon-circle svg {
+      fill: var(--primary);
+      width: 32px;
+      height: 32px;
+    }
+    .icon-circle:hover {
+      box-shadow: inset 3px 3px 6px rgba(18, 115, 159, 0.08), inset -3px -3px 6px rgba(255, 255, 255, 0.6);
+    }
+
+
+    /* Layout helper classes - Mobile-first */
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2-col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-3-col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .grid-4-col {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .flex-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .flex-row-reverse-md {
+        flex-direction: row-reverse;
+      }
+    }
+
+    /* Specific Section Styles */
+    #navigation {
+      background-color: var(--backgroundBase);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+    #navigation .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #navigation .brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--textMain);
+      padding: 0.5rem 0;
+    }
+    #navigation .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: none; /* Hidden by default for mobile */
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+    #navigation .nav-list.active {
+      display: flex;
+    }
+    #navigation .nav-list li {
+      margin: 0.5rem 0;
+    }
+    #navigation .nav-list a {
+      color: var(--textMuted);
+      padding: 0.5rem 1rem;
+      display: block;
+      border-radius: var(--borderRadius);
+      transition: all 0.2s ease;
+    }
+    #navigation .nav-list a:hover {
+      background-color: rgba(var(--primary), 0.1);
+      color: var(--primary);
+      text-decoration: none;
+    }
+    #navigation .cta-button-nav {
+      margin-left: auto; /* Pushes button to the right */
+      margin-top: 1rem;
+    }
+    #navigation .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--textMain);
+      padding: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      #navigation .nav-container {
+        flex-wrap: nowrap;
+      }
+      #navigation .nav-list {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        margin-left: auto;
+      }
+      #navigation .nav-list li {
+        margin: 0 1rem;
+      }
+      #navigation .menu-toggle {
+        display: none;
+      }
+      #navigation .cta-button-nav {
+        margin-left: 2rem;
+        margin-top: 0;
+      }
+    }
+
+    #hero {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      overflow: hidden; /* For pseudo-elements or subtle effects */
+    }
+    #hero .hero-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 3rem;
+    }
+    #hero h1 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    #hero p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+    #hero .button {
+      background-color: white;
+      color: var(--primaryDark);
+      box-shadow: 8px 8px 16px rgba(0,0,0,0.3), -8px -8px 16px rgba(255,255,255,0.7);
+    }
+    #hero .button:hover {
+      background-color: var(--backgroundBase);
+      box-shadow: inset 5px 5px 10px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.8);
+      color: var(--primary);
+    }
+    #hero .hero-image-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      padding-bottom: 100%; /* Aspect ratio 1:1 */
+      border-radius: var(--borderRadius);
+      overflow: hidden;
+      box-shadow: var(--cardBoxShadow);
+    }
+    #hero .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--borderRadius);
+      transition: transform 0.5s ease-in-out;
+    }
+    #hero .hero-image-container:hover .hero-image {
+        transform: scale(1.05);
+    }
+
+    @media (min-width: 768px) {
+      #hero {
+        text-align: left;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+      }
+      #hero h1 {
+        font-size: 3.5rem;
+      }
+      #hero .hero-content-wrapper {
+        flex-direction: row;
+        text-align: left;
+      }
+      #hero .hero-text-content {
+        flex: 1;
+        padding-right: 3rem;
+      }
+      #hero .hero-image-container {
+        flex: 1;
+        max-width: 640px; /* Specific width from JSON */
+        padding-bottom: 0;
+        height: 640px; /* Specific height from JSON */
+      }
+    }
+
+    #about {
+      text-align: center;
+    }
+    #about img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--borderRadius);
+      margin-top: 2rem;
+      box-shadow: var(--cardBoxShadow);
+      transition: transform 0.4s ease-out;
+    }
+    #about img:hover {
+      transform: scale(1.02);
+    }
+
+    #services .service-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #services .service-item img {
+      max-width: 100%;
+      width: 384px;
+      height: 384px;
+      object-fit: cover;
+      border-radius: var(--borderRadius);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--cardBoxShadow);
+      transition: transform 0.4s ease;
+    }
+    #services .service-item img:hover {
+      transform: translateY(-8px);
+    }
+    #services h2, #services h3 {
+      text-align: center;
+    }
+
+    #supply-chain .metric-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #supply-chain .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primaryDark);
+      margin-top: 0.5rem;
+    }
+    #supply-chain .metric-label {
+      color: var(--textMuted);
+    }
+    #supply-chain .supply-chain-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--borderRadius);
+      box-shadow: var(--cardBoxShadow);
+      margin-top: 2rem;
+      transition: transform 0.5s ease-in-out;
+    }
+    #supply-chain .supply-chain-image:hover {
+        transform: rotate(2deg) scale(1.02);
+    }
+
+    #dyeing-process {
+      text-align: center;
+    }
+    #dyeing-process .featured-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--borderRadius);
+      margin-top: 2rem;
+      box-shadow: var(--cardBoxShadow);
+      transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    #dyeing-process .featured-image:hover {
+      filter: saturate(1.2);
+      transform: scale(1.01);
+    }
+
+
+    #testimonials .quote-card {
+      background-color: var(--backgroundBase);
+      border-radius: var(--borderRadius);
+      padding: 2rem;
+      box-shadow: var(--cardBoxShadow);
+      margin: 1rem 0;
+      text-align: center;
+      position: relative;
+      transform: translateY(0);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    #testimonials .quote-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 10px 10px 20px rgba(18, 115, 159, 0.15), -10px -10px 20px rgba(255, 255, 255, 0.8), 0 12px 36px rgba(0,0,0,0.25);
+    }
+    #testimonials .quote-text {
+      font-style: italic;
+      color: var(--textMain);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    #testimonials .quote-author {
+      font-weight: 700;
+      color: var(--primaryDark);
+    }
+    #testimonials h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: #212529; /* Dark background */
+      color: #ffffff; /* Light text */
+      padding: 3rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--primaryLight);
+      margin: 0 0.5rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+    footer .contact-info, footer .legal-links {
+      margin-top: 1.5rem;
+    }
+    footer .legal-links a {
+      color: var(--primaryLight);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer .legal-links a:hover {
+      text-decoration: underline;
+    }
+    footer .copyright {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Cookie Consent */
+    .cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(30, 40, 50, 0.95); /* Darker, slightly transparent */
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    }
+    .cookie-consent-banner p {
+      margin: 0 0 1rem 0;
+      font-size: 0.9rem;
+    }
+    .cookie-consent-banner button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .cookie-consent-banner button:hover {
+      background-color: #e06030; /* Slightly darker accent */
+    }
+    @media (min-width: 768px) {
+      .cookie-consent-banner {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.8rem 2rem;
+      }
+      .cookie-consent-banner p {
+        margin: 0;
+      }
+    }
+
+    /* Accessibility - Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header id="navigation">
+    <div class="nav-container">
+      <a href="#" class="brand">LoomEthos</a>
+      <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#supply-chain">Supply Chain</a></li>
+          <li><a href="#dyeing-process">Dyeing Process</a></li>
+          <li><a href="#contact" class="button button-primary cta-button-nav">Book Consultation</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<main>
+<style>
+  #loomethos-terms-and-conditions {
+    padding-top: 7rem;
+  }
+</style>
+<section id="loomethos-terms-and-conditions">
+  <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem; color: #2c3e50;">Terms and Conditions for LoomEthos</h2>
+  <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; color: #34495e;">Welcome to LoomEthos. These Terms and Conditions govern your use of our website and services. By accessing or using our online platform, you agree to be bound by these Terms and all applicable laws and regulations.</p>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">1. Acceptance of Terms</h3>
+  <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; color: #34495e;">Your access to and use of this website and the services offered by LoomEthos (including but not limited to sustainable and ethically sourced textiles, custom fabric development, small-batch textile manufacturing, consultancy on ethical supply chains, and natural dyeing processes) is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use our services.</p>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">2. Intellectual Property Rights</h3>
+  <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6; color: #34495e;">All content on this site, including text, graphics, logos, images, as well as the compilation thereof, and any software used on the site, is the property of LoomEthos or its suppliers and protected by copyright and other intellectual property laws. You agree not to reproduce, duplicate, copy, sell, resell or exploit any portion of the service, use of the service, or access to the service or any contact on the website through which the service is provided, without express written permission by us.</p>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">3. Use of Our Services</h3>
+  <ul style="font-size: 1rem; margin-left: 1.5rem; margin-bottom: 1.5rem; list-style: disc; color: #34495e;">
+    <li style="margin-bottom: 0.75rem; line-height: 1.6;">You agree to use our services only for lawful purposes and in a way that does not infringe the rights of, restrict or inhibit anyone else's use and enjoyment of our website.</li>
+    <li style="margin-bottom: 0.75rem; line-height: 1.6;">Misuse of our online platform is strictly prohibited. This includes, but is not limited to, introducing viruses, trojans, worms, logic bombs, or other material that is malicious or technologically harmful.</li>
+    <li style="margin-bottom: 0.75rem; line-height: 1.6;">For custom fabric development and manufacturing services, specific project agreements or contracts will govern the detailed terms of engagement, in addition to these general terms.</li>
+  </ul>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">4. Ethical and Sustainable Practices</h3>
+  <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; color: #34495e;">LoomEthos is committed to ethical textile manufacturing and sustainable practices. We expect our clients and partners to align with these values. Any engagement or partnership that contradicts our commitment to ethical sourcing, fair labor, or environmental stewardship may result in the termination of services.</p>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">5. Disclaimer of Warranties</h3>
+  <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; color: #34495e;">Our online platform and the services provided are on an "as is" and "as available" basis. LoomEthos makes no representations or warranties of any kind, express or implied, as to the operation of their services, or the information, content, or materials included therein. To the full extent permissible by applicable law, LoomEthos disclaims all warranties, express or implied, including, but not limited to, implied warranties of merchantability and fitness for a particular purpose.</p>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">6. Limitation of Liability</h3>
+  <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; color: #34495e;">LoomEthos will not be liable for any damages of any kind arising from the use of our services, including, but not limited to direct, indirect, incidental, punitive, and consequential damages. This includes damages to, or viruses that may infect, your computer equipment or other property on account of your access to, use of, or browsing of the website or your downloading of any materials, data, text, images, video or audio from the website.</p>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">7. Governing Law and Jurisdiction</h3>
+  <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; color: #34495e;">These Terms shall be governed and construed in accordance with the laws of New York, New York, USA, without regard to its conflict of law provisions. Any dispute arising out of or related to the use of our services will be subject to the exclusive jurisdiction of the courts located in New York, New York, USA.</p>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">8. Changes to Terms</h3>
+  <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; color: #34495e;">We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. By continuing to access or use our services after those revisions become effective, you agree to be bound by the revised terms.</p>
+
+  <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50;">9. Contact Information</h3>
+  <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6; color: #34495e;">If you have any questions about these Terms, please contact us:</p>
+  <ul style="font-size: 1rem; margin-left: 1.5rem; margin-bottom: 1.5rem; list-style: square; color: #34495e;">
+    <li style="margin-bottom: 0.5rem; line-height: 1.6;"><strong>Address:</strong> 56th Road, New York, New York, 11378, USA</li>
+    <li style="margin-bottom: 0.5rem; line-height: 1.6;"><strong>Phone:</strong> +19832277304</li>
+  </ul>
+</section>
+</main>
+<footer id="contact">
+    <div class="container">
+      <div class="brand">LoomEthos</div>
+      <p>Ethical Textile Manufacturing</p>
+      <div class="contact-info">
+        <p>56th Road, New York, New York, 11378, USA</p>
+        <p>Phone: <a href="tel:+19832277304">+19832277304</a></p>
+        <p>Email: <a href="mailto:info@DOMAIN_NAME_REPLACE">info@DOMAIN_NAME_REPLACE</a></p>
+      </div>
+      <div class="map-container" style="margin-top: 2rem; margin-bottom: 2rem; border-radius: var(--borderRadius); overflow: hidden;">
+        <iframe
+          width="100%"
+          height="300"
+          frameborder="0" style="border:0; border-radius: var(--borderRadius);"
+          src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=New+York,USA&zoom=10"
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0">
+        </iframe>
+      </div>
+      <div class="legal-links">
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./tos.html">Terms of Service</a>
+      </div>
+      <p class="copyright">© 2024 LoomEthos. All rights reserved. Ethical Textile Manufacturing.</p>
+    </div>
+  </footer>
+
+  <div class="cookie-consent-banner" id="cookieConsentBanner">
+    <p>This website uses cookies to ensure you get the best experience on our site. By continuing to use our site, you agree to our <a href="./privacy.html" style="color: var(--primaryLight);">Privacy Policy</a>.</p>
+    <button id="acceptCookies">Accept</button>
+  </div>
+
+  <script>
+    // Navigation Toggle for Mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navList = document.querySelector('.nav-list');
+  
+      if (menuToggle && navList) {
+        menuToggle.addEventListener('click', function() {
+          navList.classList.toggle('active');
+        });
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          if (navList.classList.contains('active')) {
+            navList.classList.remove('active'); // Close menu on click
+          }
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Cookie Consent
+      const consentBanner = document.getElementById('cookieConsentBanner');
+      const acceptButton = document.getElementById('acceptCookies');
+      const cookieNamePrefix = 'consent_';
+      const cookieName = cookieNamePrefix + Math.random().toString(36).substring(2, 15);
+
+      function getCookie(name) {
+          const nameEQ = name + "=";
+          const ca = document.cookie.split(';');
+          for(let i=0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+      }
+
+      function setCookie(name, value, days) {
+          let expires = "";
+          if (days) {
+              const date = new Date();
+              date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+              expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "")  + expires + "; path=/; SameSite=Lax";
+      }
+
+      const hasConsent = getCookie('cookie_consent_given');
+      if (!hasConsent) {
+          consentBanner.style.display = 'flex';
+      } else {
+          consentBanner.style.display = 'none';
+      }
+
+      acceptButton.addEventListener('click', function() {
+          setCookie('cookie_consent_given', 'true', 365); // Consent valid for 1 year
+          consentBanner.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
